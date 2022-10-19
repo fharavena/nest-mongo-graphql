@@ -30,4 +30,16 @@ export class StudentService {
   async getStudents(): Promise<Student[]> {
     return this.studentRespository.find();
   }
+
+  async getManyStudents(studentIds: string[]): Promise<Student[]> {
+    return this.studentRespository.findByIds(studentIds);
+    // return this.studentRespository.findBy({ id: { $in: studentIds } });
+    // return this.studentRespository.find({
+    //   where: {
+    //     id: {
+    //       $in: studentIds,
+    //     },
+    //   },
+    // });
+  }
 }

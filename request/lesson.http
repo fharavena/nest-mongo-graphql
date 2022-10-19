@@ -6,7 +6,7 @@ X-REQUEST-TYPE: GraphQL
 query {
   lessons {
     id
-    name
+    name    
   }
 }
 
@@ -30,14 +30,43 @@ X-REQUEST-TYPE: GraphQL
 mutation{
   createLesson(
     createLessonInput: {
-      name: "Physics Class by restCLient"
+      name: "Test Lesson with students"
       startDate: "2022-03-28T18:00:00Z"
       endDate: "2022-03-28T18:30:00Z"
+      students:[
+        "5977b96a-4506-4c5c-828b-97dd57ce09ee",
+        "f1a58153-0f3e-4721-93c7-8985cada26a8",
+        "30c69ff1-1eb4-4f8e-a8c2-0e3620b3ce72"
+      ]
     }    
   ){
     name
     id
+    students{
+      firstName
+      lastName
+    }
   }
 }
 
 
+### Assign Student to Lesson
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation{
+  assignStudentsToLesson(
+    assignStudentsToLessonInput: {
+      lessonId: "0196e955-19d7-4e0d-a8a3-14b53133ea01"
+      studentIds: [
+        "5977b96a-4506-4c5c-828b-97dd57ce09ee",
+        "f1a58153-0f3e-4721-93c7-8985cada26a8",
+        "30c69ff1-1eb4-4f8e-a8c2-0e3620b3ce72"
+      ]
+    }
+  )
+  {
+    name
+  }
+}
