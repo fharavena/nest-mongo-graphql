@@ -1,0 +1,41 @@
+### Graphql ALL Lessons
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query {
+  students {
+    firstName
+    id
+  }
+}
+
+### Graphql Lesson by id
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query{
+  student (id: "5977b96a-4506-4c5c-828b-97dd57ce09ee"){
+    firstName
+    lastName
+  }
+}
+
+### Graphql CREATE Student
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation{
+  createStudent(
+    createStudentInput: {
+      firstName: "JoeRest"
+      lastName: "DoeRest"
+    }    
+  ){
+    firstName
+    lastName
+    id
+  }
+}
