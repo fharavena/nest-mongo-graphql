@@ -1,0 +1,43 @@
+### Graphql ALL Lessons
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query {
+  lessons {
+    id
+    name
+  }
+}
+
+### Graphql Lesson by id
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query{
+  lesson (id: "30ad3476-baea-41f6-ba3a-79e7aede1cb3"){
+    name
+    startDate
+  }
+}
+
+### Graphql CREATE Lesson
+POST http://localhost:3000/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation{
+  createLesson(
+    createLessonInput: {
+      name: "Physics Class by restCLient"
+      startDate: "2022-03-28T18:00:00Z"
+      endDate: "2022-03-28T18:30:00Z"
+    }    
+  ){
+    name
+    id
+  }
+}
+
+
